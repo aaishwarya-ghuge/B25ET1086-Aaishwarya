@@ -1,0 +1,37 @@
+#include <iostream>
+#include <cmath> 
+using namespace std;
+
+double distance(double x1, double y1, double x2, double y2) {
+    return sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+}
+
+
+double distance(double x1, double y1, double z1, double x2, double y2, double z2) {
+    return sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) + (z2 - z1) * (z2 - z1));
+}
+
+int main() {
+   
+    double x1, y1, x2, y2;
+    
+    cout << "2D Distance Calculator\n";
+    cout << "Enter X and Y for Point 1: ";
+    cin >> x1 >> y1;
+    cout << "Enter X and Y for Point 2: ";
+    cin >> x2 >> y2;
+    
+    cout << "Calculated 2D Distance: " << distance(x1, y1, x2, y2) << "\n";
+
+    double x3, y3, z3, x4, y4, z4;
+    
+    cout << "\n3D Distance Calculator\n";
+    cout << "Enter X, Y, and Z for Point 1: ";
+    cin >> x3 >> y3 >> z3;
+    cout << "Enter X, Y, and Z for Point 2: ";
+    cin >> x4 >> y4 >> z4;
+    
+    cout << "Calculated 3D Distance: " << distance(x3, y3, z3, x4, y4, z4) << "\n";
+
+    return 0;
+}
