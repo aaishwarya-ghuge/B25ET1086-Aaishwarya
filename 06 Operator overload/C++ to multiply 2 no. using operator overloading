@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class complex  //defining class named complex
+{ 
+    int real, img;  //data members
+public:
+    complex(int r, int i)  //constructor
+    {
+        real = r;  //stores real part as r
+        img = i;  //stores img part as i
+    }
+    void display();  //function declaration to display complex num  
+    complex operator*(complex&);  //overloads operator for complex num mul         
+}; 
+
+void complex::display()  //definition of display  
+{ 
+    if(img >= 0)  //checking if img part is zero  
+        cout << real << " + i" << img << endl;  //displays real + img 
+    else 
+        cout << real << " - i" << -img << endl;  //displays real - img 
+} 
+
+complex complex::operator*(complex& c1)  //definition of overloaded * operator 
+{ 
+    int mul_real = (real * c1.real) - (img * c1.img);  //calculation of real part of result 
+    int mul_img = (real * c1.img) + (img * c1.real);  //calculation of img part of result 
+    return complex(mul_real, mul_img);  //stores results 
+} 
+
+int main() { 
+    complex c1(1, 2), c2(3, 4);  //creates 2 complex object 
+    complex c3 = c1 * c2;  //calls overloaded * operator to mul c1 and c2                   
+    
+    cout << "Product is ";  //prints
+    c3.display();  //displays result stored in c3                   
+   
+    return 0; 
+}
