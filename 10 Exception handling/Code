@@ -1,0 +1,26 @@
+#include <iostream>  //includes input, output 
+using namespace std;  //allows using cin, cout without std::
+
+int main() {  //main function where execution of program starts
+    double balance = 500.00;  //initialization of account balance
+    double deposit;  // declaration of variable to store deposit amount
+
+    cout << "Current Balance:" << balance << endl;  //displays current balance
+    cout << "Enter amount to deposit: ";  //asks user to enter a deposit amount
+    cin >> deposit;  //accepts the deposit amount from user
+
+    try {  //starts a try block to handle possible exception
+        if (deposit < 0) {  //checks whether the deposit amount is negative
+            throw "Error! You cannot deposit a negative amount";  //throws an exception if negative 
+        }
+        balance = balance + deposit;  //adds the deposit to current balance
+        cout << "Deposit successful" << endl;  //displays a success message
+        cout << "New Balance:" << balance << endl;  //displays the new balance after deposition
+    }  //ends try block
+    
+    catch (const char* errorMessage) {  //catches the throw 
+        cout << errorMessage << endl;  //displays the error message
+    }  //ends catch block
+
+    return 0;  //ends program successfully 
+}  //ends main function
