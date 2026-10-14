@@ -1,0 +1,30 @@
+#include <iostream>  //to include cin and cout
+#include <string>  //includes string data type
+using namespace std; 
+
+class String {  //defines a class named string
+private:
+    string str;  //declaration of private string variable 
+
+public:
+    String() {  //constructor
+        str = "";  //initialization of string as empty 
+    }
+
+    void accept() {  //function to accept string from user
+        cout << "Enter a string: ";  //displays text to user
+        getline(cin, str);  //reads entire string 
+    }
+
+    void display() const {  //function to display string, const means it won't modify object
+        cout << str << endl;  //prints stored string
+    }
+};  //end of class definition
+
+int main() {  //main function where actual program execution starts
+    String myString;  //creates object named mystring 
+    myString.accept();  //calls accept function to take input 
+    cout << "The entered string is: ";  //displays to user before entering string
+    myString.display();  //calls display function to print stored string 
+    return 0;
+}
