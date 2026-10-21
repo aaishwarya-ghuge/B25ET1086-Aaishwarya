@@ -1,0 +1,38 @@
+#include <iostream>  //includes cin and cout
+using namespace std;  //allows use of cout without std
+
+class HospitalStaff {  //base class for hospital staff
+public:  //public access specifiers
+    virtual void displayDuty() {  //virtual function for displaying duties
+        cout << "General hospital staff duty\n";  //displays general duty
+    }  //ends displayDuty() function
+};  //ends HospitalStaff class
+
+class Doctor : public HospitalStaff {  //doctor inherits from HospitalStaff
+public:  //public accessm specifiers 
+    void displayDuty() override {  //overrides the base class function
+        cout << "Doctor: Diagnosing patients, performing surgeries\n";  // displays doctor's duties
+    }  //ends displayDuty() function
+};  //ends doctor class
+
+class Nurse : public HospitalStaff {  //nurse inherits from HospitalStaff 
+public:  //public accessm specifiers
+    void displayDuty() override {  //overrides the base class function 
+        cout << "Nurse: Monitoring vitals, administering medication\n";  // displays nurse's duties
+    }  //ends displayDuty() function
+};  //ends nurse class
+
+int main() {  //main function program execution starts
+    HospitalStaff staff;  //creates base class object
+    Doctor doc;  //creates doctor object
+    Nurse nurse;  //creates nurse object
+
+    HospitalStaff* staffList[] = { &staff, &doc, &nurse };  //creates array of base class pointers, store addresses of all 3
+
+    cout << "Demonstrating Polymorphism Cleanly:\n";  //prints heading
+    for (HospitalStaff* member : staffList) {  //loops through each hospital staff pointer
+        member->displayDuty();  //calls the appropriate duty function
+    }  //ends th efor loop
+
+    return 0;  //ends program
+}  //ends main function
