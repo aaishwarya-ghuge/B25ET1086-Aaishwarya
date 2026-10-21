@@ -1,0 +1,21 @@
+#include <iostream>  //includes cin and cout 
+using namespace std;  //use of cout without std 
+
+namespace first {  //defines first namespace 
+    void display() {  //defines display function 
+        cout << "Aaish" << endl;  //prints Aaish 
+    }  //ends display function
+}  //ends first namespace 
+
+namespace second {  //defines first namespace 
+    void display() {  //defines display function  
+        cout << "Sanika" << endl;  //prints Sanika
+    }  //ends display function 
+}  //ends second namespace  
+
+int main() {  //main function program execution starts 
+    first::display();  //calls display() from first namespace 
+    second::display();  //calls display() from second namespace
+    
+    return 0;  //ends program
+}  //ends main function
