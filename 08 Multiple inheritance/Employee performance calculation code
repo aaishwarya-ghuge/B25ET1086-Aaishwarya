@@ -1,0 +1,57 @@
+#include <iostream>  //includes cin and cout
+#include <string>  //includes string data type
+
+using namespace std;
+
+class EmployeeBasicInfo {  //first base class named for basic info employee
+protected:  //variables will be protected but child class can access it
+    string name;  //stores name of employee
+    int id;  //stores employee id
+
+public:
+    void getBasicData() {
+        cout << "Enter Employee ID: ";  //prompts user to enter id
+        cin >> id;  //reads employee id
+        cout << "Enter Name: ";  //prompts user to enter name
+        cin >> name;  //reads employee name
+    }
+};  //ends EmployeeBasicInfo class
+
+class ProjectPerformanceInfo {  //base class for project details
+protected:
+    float completionPercentage;  //stores project completion percentage
+
+public:
+    void getPerformanceData() {  //accepts performance data
+        cout << "Enter Completion Percentage (0-100): ";  //prompts user to enter project completion percentage
+        cin >> completionPercentage;  //reads completion percentage
+    }
+};  //ends ProjectPerformanceInfo class
+
+class ProjectEvaluation : public EmployeeBasicInfo, public ProjectPerformanceInfo {  //inherits both base classes
+private:
+    float performanceScore;  //stores calculated performance score
+
+public:
+    void calculateCompletionScore() {  //calculates performance score
+        performanceScore = (completionPercentage / 100.0f) * 5.0f;  //converts percentage to score
+    }
+
+    void displayReport() {  //function to display the final report
+        cout << "\nProject Report\n";  //prints the report heading
+        cout << "Employee ID: " << id << "\n";  //displays employee id
+        cout << "Name: " << name << "\n";  //displays employee name
+        cout << "Performance Score (1-5): " << performanceScore << "\n";  //displays the calculated performance score
+    }
+};
+
+int main() {  //main function program execution starts 
+    ProjectEvaluation emp;  //creates an object named emp
+    
+    emp.getBasicData();  //accepts employee id and emp
+    emp.getPerformanceData();  //accepts project completion percentage
+    emp.calculateCompletionScore();  //calculates the performance score 
+    emp.displayReport();  //displays the final project report 
+
+    return 0;  //ends the program 
+}  //ends the main function
