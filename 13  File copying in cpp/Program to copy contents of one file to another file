@@ -1,0 +1,42 @@
+#include <iostream>  //header file for cin, cout
+#include <fstream>  //header file for file handling operations
+using namespace std;  //allows to use standard library functions without std::
+
+int main()  //main function execution of program starts here
+{
+    char source[100], destination[100];  //character arrays to store source and destination file names
+    char ch;  //variable to store one character at a time
+
+    cout << "Enter source file name: ";  //ask user to enter the source file name
+    cin >> source;  //read the source file name
+
+    cout << "Enter destination file name: ";  //ask user to enter the destination file name
+    cin >> destination;   //read the destination file name
+
+    ifstream fin(source);  //open the source file in input (reading) mode
+    ofstream fout(destination);  //open the destination file in output (writing) mode
+
+    if (!fin)  //check whether the source file opened successfully
+    {
+        cout << "Error opening source file.";  //displays error message if source file cannot be opened
+        return 1;  //terminate the program with an error code
+    }
+
+    if (!fout)  //check whether the destination file opened successfully
+    {
+        cout << "Error opening destination file.";  //display error message if destination file cannot be opened
+        return 1;  //terminate the program with an error code
+    }
+
+    while (fin.get(ch))  //read characters from source file until the end of file
+    {
+        fout.put(ch);  //write each character into the destination file
+    }
+
+    cout << "File copied successfully.";  //display success message after copying the file
+
+    fin.close();  //close the source file
+    fout.close();  //close the destination file
+
+    return 0;  //terminate the program successfully
+}
