@@ -1,0 +1,40 @@
+#include<iostream> //includes cin cout
+using namespace std; //use standard namespace
+
+template<class T> //define generic type placeholder T
+class Calculator { //start Calculator class definition
+    T num1, num2; //private member variables
+
+public: //public access specifier
+    Calculator(T n1, T n2) { //constructor 
+        num1= n1; //initialize num1
+        num2= n2; //initialize num2
+    } // End constructor
+
+    T add() { //addition function
+        return num1 + num2; //return sum
+    } // End add
+
+    T subtract() { //subtraction function
+        return num1 - num2; //return difference
+    } // End subtract
+
+    T multiply(){ //multiplication function
+        return num1 * num2; //return product
+    } //end multiply
+}; //end class definition
+
+int main(){ //main execution 
+    Calculator <int>c1(5,4); //create integer calculator instance
+    Calculator <double>c2(5.2,4.4); //create double calculator instance
+
+    cout<<"\nInteger addition is\t"<<c1.add(); //output int sum
+    cout <<"\nInteger subtraction is\t" << c1.subtract(); //output int difference
+    cout <<"\nInteger multiplication is\t" << c1.multiply(); //output int product
+
+    cout<<"\nDouble addition is\t"<<c2.add(); //output double sum
+    cout <<"\nDouble subtraction is\t" << c2.subtract(); //output double difference
+    cout <<"\nDouble multiplication is\t" << c2.multiply(); //output double product
+
+    return 0; //signals successful program exit
+} //end main
